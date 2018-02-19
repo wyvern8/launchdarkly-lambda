@@ -1,0 +1,23 @@
+{
+  "name": "launchdarkly-lambda",
+  "version": "0.1.0",
+  "description": "Automate LaunchDarkly flag updates from AWS events",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wyvern8/launchdarkly-lambda.git"
+  },
+  "keywords": [
+    "launchdarkly",
+    "lambda"
+  ],
+  "author": "Andrew Vaughan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wyvern8/launchdarkly-lambda/issues"
+  },
+  "homepage": "https://github.com/wyvern8/launchdarkly-lambda#readme"
+}
