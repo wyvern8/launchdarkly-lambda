@@ -72,4 +72,4 @@ dist/
 .DS_Store
 
 *.out
-
+swaggerYaml.js

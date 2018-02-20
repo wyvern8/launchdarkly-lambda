@@ -2,9 +2,17 @@
   "name": "launchdarkly-lambda",
   "version": "0.1.0",
   "description": "Automate LaunchDarkly flag updates from AWS events",
-  "main": "handler.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run lint && rimraf dist/ && babel ./src --out-dir dist/src --copy-files && babel ./test --out-dir dist/test --copy-files && babel ./*.js --out-dir dist/ --copy-files && npm run inline-swagger && babel dist/src/setFlagState/swaggerYaml.js",
+    "inline-swagger": "node inlineSwagger.js",
+    "commit": "./node_modules/.bin/git-cz",
+    "lint": "node ./node_modules/.bin/eslint ./src ./test --fix --ext=.js --ignore-pattern src/agent/static/ --ignore-pattern node_modules/ --ignore-pattern dist/ --ignore-pattern coverage/ --quiet",
+    "test": "npm run build && cross-env NODE_ENV=test nyc ./node_modules/.bin/mocha --timeout 10000 --require babel-core/register --require babel-polyfill './dist/test/**/*.spec.js'",
+    "semantic-release": "semantic-release",
+    "sls-deploy": "npm run build && node ./node_modules/serverless/bin/serverless deploy -v",
+    "sls-undeploy": "node ./node_modules/serverless/bin/serverless remove",
+    "sls-logs": "node ./node_modules/serverless/bin/serverless logs -f setFlagState -t"
   },
   "repository": {
     "type": "git",
@@ -19,5 +27,61 @@
   "bugs": {
     "url": "https://github.com/wyvern8/launchdarkly-lambda/issues"
   },
-  "homepage": "https://github.com/wyvern8/launchdarkly-lambda#readme"
+  "homepage": "https://github.com/wyvern8/launchdarkly-lambda#readme",
+  "dependencies": {
+    "launchdarkly-nodeutils": "^3.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-istanbul": "^4.1.5",
+    "babel-plugin-transform-async-to-generator": "^6.24 .1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "commitizen": "^2.9.6",
+    "cross-env": "^5.1.3",
+    "cz-conventional-changelog": "^2.1.0",
+    "dotenv": "^5.0.0",
+    "eslint": "^4.15.0",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-prettier": "2.6.0",
+    "firstline": "^1.2.1",
+    "format-json": "^1.0.3",
+    "mocha": "^5.0.0",
+    "node-sass": "^4.7.2",
+    "nyc": "^11.4.1",
+    "prettier": "1.10.0",
+    "rimraf": "^2.6.2",
+    "semantic-release": "^12.2.2",
+    "serverless": "^1.25.0",
+    "serverless-dotenv-plugin": "^1.0.1",
+    "serverless-webpack": "^4.2.0",
+    "sinon": "^4.1.3",
+    "supertest": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=8.4.0"
+  },
+  "nyc": {
+    "require": [
+      "babel-register"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
