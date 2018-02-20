@@ -33,8 +33,8 @@ You will need to have configured https://serverless.com/ framework and aws sdk.
 You can tail the Lambda logs while stopping and starting using `npm run sls-logs`
 
 ## Config
-A this is an initial prototype, it currently supports one flag toggled off when a single instance is
-not in 'running' state, and bak on when it is running.   This could be expanded to cater for a configurable list of events and associated flags (TODO).
+As this is an initial prototype, it currently supports one flag toggled off when a single instance is
+not in 'running' state, and back on when it is running.   This could be expanded to cater for a configurable list of events and associated flags (TODO).
 Event types: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/EventTypes.html
 
 Note that a couple of workarounds for loading swagger.yaml in Lambda are currently in place - this will be tidied up.
