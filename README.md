@@ -21,6 +21,8 @@ we may want to turn off related features automatically.
 An AWS Lambda function is configured to listen to AWS CloudWatch events, and toggle flags accordingly.
 At this stage a single flag is toggled based on EC2 instance state.
 
+API calls to LaunchDarkly are managed using https://github.com/wyvern8/launchdarkly-nodeutils
+
 ## Install
 You will need to have configured https://serverless.com/ framework and aws sdk.
 
@@ -38,3 +40,4 @@ not in 'running' state, and back on when it is running.   This could be expanded
 Event types: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/EventTypes.html
 
 Note that a couple of workarounds for loading swagger.yaml in Lambda are currently in place - this will be tidied up.
+
