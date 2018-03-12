@@ -4,8 +4,8 @@
     "agentGroup": "av",
     "tasks": [
       {
-        "executor": "Sonar",
-        "context": "Sonar test",
+        "executor": "DockerSonar",
+        "context": "Scan PR",
         "options": {
            "env": {"BUILD_TYPE": "nodejs"}
         }
