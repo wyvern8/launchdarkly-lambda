@@ -1,0 +1,15 @@
+{
+  "pull_request": {
+    "av": "fslld",
+    "agentGroup": "av",
+    "tasks": [
+      {
+        "executor": "Sonar",
+        "context": "Sonar test",
+        "options": {
+           "env": {"BUILD_TYPE": "nodejs"}
+        }
+      }  
+    ]
+  }
+} 
