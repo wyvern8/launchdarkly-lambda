@@ -1,7 +1,7 @@
 {
   "pull_request": {
-    "av": "fdsdbkd",
-    "agentGroup": "av",
+    "av": "fdsddbkd",
+    "agentGroup": "K8S",
     "tasks": [
       {
         "executor": "DockerSonar",
