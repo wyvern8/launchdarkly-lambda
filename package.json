@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/wyvern8/launchdarkly-lambda#readme",
   "dependencies": {
-    "launchdarkly-nodeutils": "^3.0.0",
+    "launchdarkly-nodeutils": "^3.1.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.26.0"
   },
