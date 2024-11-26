@@ -1,0 +1,15 @@
+{
+  "pull_request": {
+    "av": "fdsdkdd",
+    "agentGroup": "K8S",
+    "tasks": [
+      {
+        "executor": "DockerSonar",
+        "context": "Scan PR",
+        "options": {
+           "env": {"BUILD_TYPE": "nodejs"}
+        }
+      }  
+    ]
+  }
+} 
